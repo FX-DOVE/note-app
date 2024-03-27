@@ -25,10 +25,16 @@ button {
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
-  color: #08c;
+  color: white;
+  background-color: hsl(0, 2%, 26%);
+  padding: 5px 15px;
+  border-radius: 5px;
 }
 button:hover {
-  color: #04c;
+  background-color: hsl(0, 2%, 50%);
+}
+button:active{
+  background-color: hsl(0, 2%, 80%);
 }
 
 .App {
@@ -40,7 +46,7 @@ button:hover {
 .app-sidebar {
   width: 30%;
   height: 100vh;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #f30404;
 }
 
 .app-sidebar-header {
@@ -50,15 +56,18 @@ button:hover {
 }
 .app-sidebar-header h1 {
   margin: 0;
+
 }
 
 .app-sidebar-notes {
   height: calc(100vh - 78px);
-  overflow-y: scroll;
+ overflow-y: scroll;
+ 
 }
 .app-sidebar-note {
   padding: 25px;
   cursor: pointer;
+  
 }
 .sidebar-note-title {
   display: flex;
@@ -66,6 +75,9 @@ button:hover {
 }
 .app-sidebar-note button {
   color: crimson;
+  font-weight: 500;
+  
+
 }
 .app-sidebar-note p {
   margin: 10px 0;
@@ -89,6 +101,7 @@ button:hover {
 .app-main {
   width: 70%;
   height: 100vh;
+ 
 }
 .app-main-note-edit,
 .app-main-note-preview {
@@ -125,10 +138,12 @@ textarea {
   height: 50px;
   font-size: 2rem;
 }
-
+button .delete{
+  background-color: #f30404;
+}
 /* Preview */
 .app-main-note-preview {
-  border-top: 1px solid #ddd;
+ margin-top: 1rem;
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.02);
 }
@@ -142,4 +157,35 @@ textarea {
   padding: 0 25px 25px 25px;
   font-size: 1rem;
   line-height: 2rem;
+}
+
+/* Style the file input button */
+
+label {
+  position: absolute;
+  top: 6em;
+  right: 2em;
+  padding: 10px;
+  background-color: hsl(0, 2%, 26%);
+  color: white;
+  cursor: pointer;
+}
+
+
+
+label:hover {
+background-color: hsl(0, 2%, 50%);
+}
+label:active{
+background-color: hsl(0, 2%, 80%);
+}
+
+
+
+
+/* Style the image */
+img {
+  max-width: 20%;
+  height: auto;
+  margin-left: 2rem;
 }

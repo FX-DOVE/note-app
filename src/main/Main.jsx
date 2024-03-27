@@ -9,7 +9,20 @@ const Main = ({ activeNote, onUpdateNote }) => {
     });
   };
 
-  if (!activeNote) return <div className="no-active-note">No Active Note</div>;
+  const onUploadImage = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      onEditField("image", reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const onDeleteImage = () => {
+    onEditField("image", "");
+  };
+
+  if (!activeNote) return <div className="no-active-note">select note or add new note</div>;
 
   return (
     <div className="app-main">
@@ -28,12 +41,22 @@ const Main = ({ activeNote, onUpdateNote }) => {
           value={activeNote.body}
           onChange={(e) => onEditField("body", e.target.value)}
         />
+        <label htmlFor="image" className="add-image-button">Add Image</label>
+        <input
+          type="file"
+          id="image"
+          accept="image/*"
+          onChange={onUploadImage}
+          style={{display: 'none'}}
+        />
+        {activeNote.image && <button className="delete" onClick={onDeleteImage}>Delete Image</button>}
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
         <ReactMarkdown className="markdown-preview">
           {activeNote.body}
         </ReactMarkdown>
+        {activeNote.image && <img src={activeNote.image} alt="Note" />}
       </div>
     </div>
   );
